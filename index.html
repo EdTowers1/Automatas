@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Validador Verbo To Be</title>
+</head>
+
+<body>
+
+    <h1>Validador de Oraciones</h1>
+
+    <form id="sentence-form">
+        <label for="sentence1">Oración 1:</label>
+        <input type="text" id="sentence1">
+
+        <label for="sentence2">Oración 2:</label>
+        <input type="text" id="sentence2">
+
+        <label for="sentence3">Oración 3:</label>
+        <input type="text" id="sentence3">
+
+        <label for="sentence4">Oración 4:</label>
+        <input type="text" id="sentence4">
+
+        <label for="sentence5">Oración 5:</label>
+        <input type="text" id="sentence5">
+
+        <button type="button" onclick="checkSentences()">Validar</button>
+    </form>
+
+    <div id="results"></div>
+
+</body>
+
+<script>
+
+    // Expresiones regulares 
+    const afirmativeToBeRegex = /^(I|He|She|It|You|We|They|[A-Z][a-z]+|The\s[a-z]+(s|es)?)\s(am|is|are)(?!\snot)/;
+    function checkSentences() {
+
+        const sentences = [
+            sentence1.value,
+            sentence2.value,
+            sentence3.value,
+            sentence4.value,
+            sentence5.value
+        ];
+        console.log(sentences);
+
+        let correctCount = 0;
+
+        sentences.forEach(sentence => {
+            if (afirmativeToBeRegex.test(sentence)) {
+                correctCount++;
+            }
+        });
+
+        let message = "";
+
+        if (correctCount == 5) {
+            message = "Excelente, todas fueron correctas!";
+        } else if (correctCount >= 3) {
+            message = "Muy bien, pero puedes mejorar";
+        } else {
+            message = "Tienes que estudiar más";
+        }
+
+        results.innerText = `Oraciones correctas: ${correctCount}\n${message}`;
+
+    }
+
+</script>
+
+</html>
