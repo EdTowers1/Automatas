@@ -1,74 +1,52 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Validador Verbo To Be</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validador de oraciones con "to be"</title>
 </head>
-
 <body>
+  <h2>Validador de oraciones con "to be"</h2>
+  
+  <label for="oraciones">Ingresa las oraciones:</label>
+  <textarea id="oraciones" rows="4" cols="50"></textarea>
 
-    <h1>Validador de Oraciones</h1>
+  <button onclick="validarOraciones()">Validar Oraciones</button>
 
-    <form id="sentence-form">
-        <label for="sentence1">Oración 1:</label>
-        <input type="text" id="sentence1">
+  <h3>Resultado:</h3>
+  <div id="resultado"></div>
 
-        <label for="sentence2">Oración 2:</label>
-        <input type="text" id="sentence2">
-
-        <label for="sentence3">Oración 3:</label>
-        <input type="text" id="sentence3">
-
-        <label for="sentence4">Oración 4:</label>
-        <input type="text" id="sentence4">
-
-        <label for="sentence5">Oración 5:</label>
-        <input type="text" id="sentence5">
-
-        <button type="button" onclick="checkSentences()">Validar</button>
-    </form>
-
-    <div id="results"></div>
-
-</body>
-
-<script>
-
-    // Expresiones regulares 
-    const afirmativeToBeRegex = /^(I|He|She|It|You|We|They|[A-Z][a-z]+|The\s[a-z]+(s|es)?)\s(am|is|are)(?!\snot)/;
-    function checkSentences() {
-
-        const sentences = [
-            sentence1.value,
-            sentence2.value,
-            sentence3.value,
-            sentence4.value,
-            sentence5.value
-        ];
-        console.log(sentences);
-
-        let correctCount = 0;
-
-        sentences.forEach(sentence => {
-            if (afirmativeToBeRegex.test(sentence)) {
-                correctCount++;
-            }
-        });
-
-        let message = "";
-
-        if (correctCount == 5) {
-            message = "Excelente, todas fueron correctas!";
-        } else if (correctCount >= 3) {
-            message = "Muy bien, pero puedes mejorar";
-        } else {
-            message = "Tienes que estudiar más";
-        }
-
-        results.innerText = `Oraciones correctas: ${correctCount}\n${message}`;
-
+  <script>
+   const regexToBeAfirmativo = /^((I('m| am)|You('re| are)|He('s| is)|She('s| is)|It('s| is)|We('re| are)|They('re| are))|[A-Z][a-z]*('s| is)|The .+ (is|'s)) .+$/;
+    function validarToBeAfirmativo(cadena) {
+      return regexToBeAfirmativo.test(cadena);
     }
 
-</script>
+    function validarOraciones() {
+      const inputOraciones = document.getElementById('oraciones');
+      const resultadoDiv = document.getElementById('resultado');
 
+      // Limpiar el resultado anterior
+      resultadoDiv.innerHTML = '';
+
+      // Obtener las oraciones del textarea
+      const oraciones = inputOraciones.value.split('\n');
+
+      // Validar cada oración y mostrar el resultado
+      oraciones.forEach((oracion, index) => {
+        const esValida = validarToBeAfirmativo(oracion.trim());
+        const resultado = esValida ? 'Correcta' : 'Incorrecta';
+        const color = esValida ? 'green' : 'red';
+
+        // Crear un elemento div para mostrar el resultado
+        const resultadoElement = document.createElement('div');
+        resultadoElement.style.color = color;
+        resultadoElement.textContent = `Oración ${index + 1}: ${resultado}`;
+
+        // Agregar el resultado al contenedor
+        resultadoDiv.appendChild(resultadoElement);
+      });
+    }
+  </script>
+</body>
 </html>
