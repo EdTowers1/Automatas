@@ -39,23 +39,43 @@ function validarOraciones() {
   });
 
   // Agregar un pequeño retraso antes de mostrar la alerta
-  setTimeout(() => {
-    // Determinar el mensaje final según el contador
-    let message = "";
-    if (correctCount === oraciones.length) {
-      message = "Excelente, todas fueron correctas!";
-    } else if (correctCount >= oraciones.length / 2) {
-      message = "Muy bien, pero puedes mejorar";
-    } else {
-      message = "Tienes que estudiar más";
-    }
+  // Reemplazar el código de las alertas con SweetAlert2
 
-    // Mostrar el mensaje final
-    alert(message);
-  }, 100);
+setTimeout(() => {
+  // Determinar el mensaje final según el contador
+  let message = "";
+  if (correctCount === oraciones.length) {
+      message = "Excelente, todas fueron correctas!";
+      Swal.fire({
+          title: '¡Excelente!',
+          text: 'Todas las oraciones fueron correctas',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+      });
+  } else if (correctCount >= oraciones.length / 2) {
+      message = "Muy bien, pero puedes mejorar";
+      Swal.fire({
+          title: 'Muy bien',
+          text: 'Pero puedes mejorar',
+          icon: 'info',
+          confirmButtonText: 'Aceptar'
+      });
+  } else {
+      message = "Tienes que estudiar más";
+      Swal.fire({
+          title: 'Tienes que estudiar más',
+          text: 'Algunas oraciones no fueron correctas',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+      });
+  }
+}, 200); // Ajusta el tiempo según sea necesario
+
 }
 
 const inputOraciones = document.getElementById("oraciones");
+const resultadoDiv = document.getElementById('resultado');
 function limpiarTextArea() {
   inputOraciones.value = ''; // Limpia el contenido del textarea
+  resultadoDiv.innerHTML = '';
 }
