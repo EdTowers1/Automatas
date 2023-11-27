@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+*{
+margin: 0;
+}
+
+body{
+background: black !important;    
+}
+nav{
+    font-family: 'IBM Plex Mono', monospace !important;
+}
+/*fuentes*/
+.inter{
+    font-family: 'Inter', sans-serif;
+}
+.imb{
+    font-family: 'IBM Plex Mono', monospace !important;
+}
+
+/*Contenido*/
+.texto-grande{
+    font-size: 64px;
+}
+
+.boton-comenzar{
+    margin-top: 50px;
+    padding: 10px 10px !important;
+    background: #1CF1A1 !important;
+    color: black;
+    font-weight: 400;
+    border-radius: 4px !important;
+    width: 8rem;
+}
+
+textarea{
+    height: 300px;
+}
+
+/*off canvas*/
+
+
+.sombra{
+    border-radius: 8px;
+    box-shadow: 0px -2px 31px -11px rgba(28, 241, 161, 0.12), 1px -7px 40px 5px rgba(8, 34, 33, 0.80);
+}
+
+.fade{
+    backdrop-filter: blur(6.550000190734863px) !important; 
+}
