@@ -27,6 +27,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css"
         integrity="sha512-gFMl3u9d0xt3WR8ZeW05MWm3yZ+ZfgsBVXLSOiFz2xeVrZ8Neg0+V1kkRIo9LikyA/T9HuS91kDfc2XWse0K0A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
 </head>
 
 <body>
@@ -63,7 +70,7 @@
                 GRAMATICAS Y <br />
 
                 <span style="color: #1cf1a1">
-                    < /span>LENGUAJES<span style="color: #1cf1a1">></span>
+                </span><span style="color: #1cf1a1">LENGUAJES</span>
             </h1>
         </div>
         <div class="col-sm-3 d-flex align-items-start mt-5">
@@ -118,16 +125,16 @@
                     <div class="row">
                         <div class="col-md-7">
                             <label for="oraciones" class="mb-2 text-light">Ingresa las oraciones:</label>
-                           
+
                             <textarea id="oraciones" class="form-control mb-2"></textarea>
                             <div class="d-flex gap-4">
-                                 <button onclick="validarOraciones()" class="btn btn-light">
-                                Validar Oraciones
-                            </button>
-                            <button id="limpiar" class="btn btn-light" onclick="limpiarTextArea()">Limpiar</button>
+                                <button onclick="validarOraciones()" class="btn btn-light">
+                                    Validar Oraciones
+                                </button>
+                                <button id="limpiar" class="btn btn-light" onclick="limpiarTextArea()">Limpiar</button>
 
                             </div>
-                           
+
                         </div>
                         <div class="col-md-5">
                             <h3 class="text-light">Resultado:</h3>
@@ -136,9 +143,9 @@
                         </div>
                     </div>
 
-                   
 
-                   
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
